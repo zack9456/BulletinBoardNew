@@ -1,20 +1,16 @@
 package Domain;
 
-public class PriorityFactory
-{
-    public IPriorityDecider getPriority(boolean highPriority)
-    {
+public class PriorityFactory {
+
+    public IPriorityDecider getPriority(boolean highPriority) {
         IPriorityDecider priority = null;
-        
-        if(highPriority)
-        {
+
+        if (highPriority) {
             priority = new HighPriority();
-        }
-        else
-        {
+        } else {
             priority = new NoPriority();
         }
-        
+
         return priority;
     }
 }

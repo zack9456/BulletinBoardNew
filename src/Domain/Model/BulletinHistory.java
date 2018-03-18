@@ -5,61 +5,62 @@ import java.sql.Timestamp;
 import Data.BulletinHistoryDTO;
 
 public class BulletinHistory {
-	private int Id;
-	private Timestamp Created;
-	private String CurrentState;
-	private Bulletin Bulletin;
-	private Integer CurrentBulletinHistory;
 
-	public BulletinHistory(Bulletin bulletin, String state) {
-		this.Created = new Timestamp(System.currentTimeMillis());
-		this.CurrentState = state;
-		this.Bulletin = bulletin;
-	}
+    private int Id;
+    private Timestamp Created;
+    private String CurrentState;
+    private Bulletin Bulletin;
+    private Integer CurrentBulletinHistory;
 
-	public BulletinHistory(BulletinHistoryDTO bulletinHistoryDTO) {
-		this.Created = bulletinHistoryDTO.created;
-		this.CurrentState = bulletinHistoryDTO.currentState;
-		this.Id = bulletinHistoryDTO.id;
-		this.Bulletin = new Bulletin(bulletinHistoryDTO.bulletinDTO);
-		this.CurrentBulletinHistory = bulletinHistoryDTO.currentBulletinHistory;
-	}
+    public BulletinHistory(Bulletin bulletin, String state) {
+        this.Created = new Timestamp(System.currentTimeMillis());
+        this.CurrentState = state;
+        this.Bulletin = bulletin;
+    }
 
-	public BulletinHistory() {
-	}
+    public BulletinHistory(BulletinHistoryDTO bulletinHistoryDTO) {
+        this.Created = bulletinHistoryDTO.created;
+        this.CurrentState = bulletinHistoryDTO.currentState;
+        this.Id = bulletinHistoryDTO.id;
+        this.Bulletin = new Bulletin(bulletinHistoryDTO.bulletinDTO);
+        this.CurrentBulletinHistory = bulletinHistoryDTO.currentBulletinHistory;
+    }
 
-	public BulletinHistoryDTO convertToDTO() {
-		BulletinHistoryDTO bulletinHistoryDTO = new BulletinHistoryDTO();
-		bulletinHistoryDTO.created = this.Created;
-		bulletinHistoryDTO.currentState = this.CurrentState;
-		bulletinHistoryDTO.id = this.Id;
-		bulletinHistoryDTO.bulletinDTO = this.Bulletin.convertToDTO();
-		if (this.CurrentBulletinHistory != null) {
-			bulletinHistoryDTO.currentBulletinHistory = this.CurrentBulletinHistory;
-		} else {
-			bulletinHistoryDTO.currentBulletinHistory = null;
-		}
+    public BulletinHistory() {
+    }
 
-		return bulletinHistoryDTO;
-	}
+    public BulletinHistoryDTO convertToDTO() {
+        BulletinHistoryDTO bulletinHistoryDTO = new BulletinHistoryDTO();
+        bulletinHistoryDTO.created = this.Created;
+        bulletinHistoryDTO.currentState = this.CurrentState;
+        bulletinHistoryDTO.id = this.Id;
+        bulletinHistoryDTO.bulletinDTO = this.Bulletin.convertToDTO();
+        if (this.CurrentBulletinHistory != null) {
+            bulletinHistoryDTO.currentBulletinHistory = this.CurrentBulletinHistory;
+        } else {
+            bulletinHistoryDTO.currentBulletinHistory = null;
+        }
 
-	public String getStatus() {
-		return this.CurrentState;
-	}
+        return bulletinHistoryDTO;
+    }
 
-	public Timestamp getDate() {
-		return this.Created;
-	}
+    public String getStatus() {
+        return this.CurrentState;
+    }
 
-	public Integer getCurrentBulletinHistory() {
-		return this.CurrentBulletinHistory;
-	}
+    public Timestamp getDate() {
+        return this.Created;
+    }
 
-	public void setBulletin(Bulletin bulletin) {
-		this.Bulletin = bulletin;
-	}
+    public Integer getCurrentBulletinHistory() {
+        return this.CurrentBulletinHistory;
+    }
 
-	public void setId(int bhId) {
-		this.Id = bhId;
-	}
+    public void setBulletin(Bulletin bulletin) {
+        this.Bulletin = bulletin;
+    }
+
+    public void setId(int bhId) {
+        this.Id = bhId;
+    }
 }
