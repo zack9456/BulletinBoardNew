@@ -6,15 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Domain.DomainFacade;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Dimension;
 import javax.swing.JTextPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class CreateCategory extends JFrame {
@@ -63,16 +59,7 @@ public class CreateCategory extends JFrame {
         contentPane.add(panel_1, BorderLayout.SOUTH);
 
         JButton btnSkapaKategori = new JButton("Skapa kategori");
-        btnSkapaKategori.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                buttonClicked();
-            }
-        });
+        btnSkapaKategori.addActionListener(new CategoryController(textField, textPane));
         panel_1.add(btnSkapaKategori);
-    }
-
-    private void buttonClicked() {
-        DomainFacade.getInstance().createCategory(this.textField.getText(), this.textPane.getText());
-        this.dispose();
     }
 }

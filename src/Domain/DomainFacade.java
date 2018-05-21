@@ -1,7 +1,5 @@
 package Domain;
 
-import java.text.SimpleDateFormat;
-
 import Data.DataFacade;
 import Data.DatabaseUtil;
 import Data.BulletinDTO;
